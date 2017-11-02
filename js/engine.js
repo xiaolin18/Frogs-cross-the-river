@@ -67,6 +67,20 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
     }
+    // 碰撞检测
+    // function checkCollisions() {
+    //   let isCol = 0;
+    //   allEnemies.forEach(function(enemy) {
+    //       // enemy.update(dt);
+    //       if (enemy.x === player.x && enemy.y === player.y) {
+    //         isCol += 1;
+    //       }
+    //   });
+    //   console.log('isCol is--', isCol);
+    //   if (isCol) {
+    //     this.reset();
+    //   }
+    // }
 
     /* 这个函数会遍历在 app.js 定义的存放所有敌人实例的数组，并且调用他们的 update()
      * 函数，然后，它会调用玩家对象的 update 方法，最后这个函数被 update 函数调用。
@@ -75,6 +89,7 @@ var Engine = (function(global) {
     function updateEntities(dt) {
         allEnemies.forEach(function(enemy) {
             enemy.update(dt);
+            enemy.checkCollision(enemy, player);
         });
         player.update();
     }
@@ -133,7 +148,7 @@ var Engine = (function(global) {
     }
 
     /* 紧接着我们来加载我们知道的需要来绘制我们游戏关卡的图片。然后把 init 方法设置为回调函数。
-     * 那么党这些图片都已经加载完毕的时候游戏就会开始。
+     * 那么当这些图片都已经加载完毕的时候游戏就会开始。
      */
     Resources.load([
         'images/stone-block.png',
