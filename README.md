@@ -5,7 +5,6 @@
   npm install
 
 # Usage
-  - 找到当前项目的存储路径(eg: ~/Desk/name);
-  - 执行命令 **http-server** ~/Desk/name 启动项目, 在浏览器打开 http://localhost:8080.
+  - 执行命令 **yarn start** 启动项目, 在浏览器打开 http://localhost:8080.
 # 游戏运行
   按住键盘的上下左右四个按键控制人物, 过河即成功, 注意碰撞到瓢虫之后会返回原点重新开始.
