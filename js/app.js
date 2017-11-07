@@ -19,11 +19,12 @@ Enemy.prototype.update = function(dt) {
       this.x = 0;
     }
 };
-// 碰撞检测
+// 碰撞检测, game over
 Enemy.prototype.checkCollision = function(enemy, player) {
-  if (enemy.y === player.y && (enemy.x - player.x <= 50)) {
+  if (enemy.y === player.y && ((player.x - enemy.x >= -20) && (player.x - enemy.x <= 20))) {
     player.x = 200;
     player.y = 400;
+    return alert('game over');
   }
 };
 // 此为游戏必须的函数，用来在屏幕上画出敌人，
@@ -33,14 +34,15 @@ Enemy.prototype.render = function() {
 
 // 现在实现你自己的玩家类
 // 这个类需要一个 update() 函数， render() 函数和一个 handleInput()函数
-var Player = function(x, y, speed) {
+var Player = function(x, y, speed, dt) {
   this.x = x;
   this.y = y;
+  this.dt = dt;
   this.speed = speed;
   this.sprite = 'images/char-boy.png';
 };
-Player.prototype.update = function(dt) {
-  const tempX = dt * this.speed;
+Player.prototype.update = function() {
+  const tempX = this.dt * this.speed;
   return tempX;
 };
 Player.prototype.handleInput = function(moveDir) {
@@ -57,10 +59,15 @@ Player.prototype.handleInput = function(moveDir) {
       }
     break;
     case 'up':
-      this.y -= this.update(2);
       if (this.y < 0) {
         this.y = 0;
       }
+      if (this.y === 0) {
+        this.x = 200;
+        this.y = 400;
+        return alert('success');
+      }
+      this.y -= this.update(2);
     break;
     case 'down':
       if (this.y < 420) {
@@ -83,7 +90,7 @@ let enemy2 = new Enemy(10, 100, 30);
 
 
 let allEnemies = [enemy, enemy1, enemy2];
-let player = new Player(200, 400, 5);
+let player = new Player(200, 400, 5, 2);
 
 // 这段代码监听游戏玩家的键盘点击事件并且代表将按键的关键数字送到 Play.handleInput()
 // 方法里面。你不需要再更改这段代码了。

@@ -6,6 +6,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div style="display: none"><canvas id="success" width="300" height="100"></canvas></div>
+    <script>
+      var c = document.querySelector('#success');
+      var ctx = c.getContext('2d');
+      ctx.strokeStyle = "#33cc33";
+      ctx.font = '36pt Impact';
+      ctx.strokeText('Success', 50, 50);
+      ctx.stroke();
+
+      // var c = document.querySelector('#success');
+      // var ctx = c.getContext('2d');
+      // ctx.strokeStyle = "#33cc33";
+      // ctx.font = '36pt Impact';
+      // ctx.strokeText('Success', 50, 50);
+      // ctx.stroke();
+    </script>
     <script src="js/resources.js"></script>
     <script src="js/app.js"></script>
     <script src="js/engine.js"></script>
