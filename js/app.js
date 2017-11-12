@@ -3,7 +3,11 @@
  * @description 一个Enemy类，玩家要躲避的敌人
  */
 var Enemy = function(x, y) {
-    this.speed = Math.random()*100;
+  /**
+   * @description 由于Math.random()取值在0-1之间， 防止取到的值过小导致速度缓慢
+   *              设置一个基础速度
+   */
+    this.speed = Math.random()*100 + 100;
     this.x = x;
     this.y = y;
     /**
@@ -20,7 +24,8 @@ Enemy.prototype.update = function(dt) {
    * @description 给每一次的移动都乘以 dt 参数，以此来保证游戏在所有的电脑上都是以同样的速度运行的
    */
     this.x += dt * this.speed;
-    if (this.x >= 505) {
+    const canvasWidth = ctx.canvas.offsetWidth;
+    if (this.x >= canvasWidth) {
       this.x = 0;
     }
 };
