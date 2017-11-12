@@ -67,20 +67,6 @@ var Engine = (function(global) {
         updateEntities(dt);
         // checkCollisions();
     }
-    // 碰撞检测
-    // function checkCollisions() {
-    //   let isCol = 0;
-    //   allEnemies.forEach(function(enemy) {
-    //       // enemy.update(dt);
-    //       if (enemy.x === player.x && enemy.y === player.y) {
-    //         isCol += 1;
-    //       }
-    //   });
-    //   console.log('isCol is--', isCol);
-    //   if (isCol) {
-    //     this.reset();
-    //   }
-    // }
 
     /* 这个函数会遍历在 app.js 定义的存放所有敌人实例的数组，并且调用他们的 update()
      * 函数，然后，它会调用玩家对象的 update 方法，最后这个函数被 update 函数调用。
@@ -102,8 +88,8 @@ var Engine = (function(global) {
     function render() {
         /* 这个数组保存着游戏关卡的特有的行对应的图片相对路径。 */
         var rowImages = [
-                'images/water-block.png',   // 这一行是河。
                 'images/stone-block.png',   // 第一行石头
+                'images/water-block.png',   // 这一行是河。
                 'images/stone-block.png',   // 第二行石头
                 'images/stone-block.png',   // 第三行石头
                 'images/grass-block.png',   // 第一行草地
